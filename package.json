@@ -6,14 +6,12 @@
   "scripts": {
     "examples:install": "npm-run-all --serial install:*",
     "examples:start": "npm-run-all --parallel start:*",
-    "install:main": "cd micro-app-main && yarn",
-    "start:main": "cd micro-app-main && yarn start",
+    "install:main": "cd micro-app-vue-main && yarn",
+    "start:main": "cd micro-app-vue-main && yarn start",
     "install:react": "cd micro-app-react && yarn",
     "start:react": "cd micro-app-react && yarn start",
     "install:vue": "cd micro-app-vue && yarn",
     "start:vue": "cd micro-app-vue && yarn serve",
-    "install:angular": "cd micro-app-angular && yarn",
-    "start:angular": "cd micro-app-angular && yarn start",
     "install:static": "cd micro-app-static && yarn",
     "start:static": "cd micro-app-static && yarn start"
   },
@@ -31,3 +29,5 @@
     "npm-run-all": "^4.1.5"
   }
 }
+
+

@@ -1,0 +1,5 @@
+const getters = {
+  count: state => state.test.count,
+  token: state => '1f429c65169fefc181899718e8183726938a8f3b6e4c3a8e86b49a9fec73e9604f9a909dc284c3ae97f0f7982e9bfdc626d46fad0d64d83741aac81f7fcf034a4f9388adfce07284fb3113db202d75851a0a2cf8fe347187d64c3dcf4640fd9acfcd95b20ac12e13d2993afd76fceab7ad504f1e225198f70c09c8278b0da420fc2c443cac951f29'
+};
+export default getters

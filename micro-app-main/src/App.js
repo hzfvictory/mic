@@ -13,7 +13,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Redirect from={'/'} exact to={'/menu/home'}/>;
+          <Redirect from={'/'} exact to={'/menu'}/>;
           {renderRoutes(routes.routes)}
         </Switch>
       </Router>

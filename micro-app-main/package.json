@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "cross-env PORT=8000 react-app-rewired start",
+    "start": "cross-env PORT=10000 react-app-rewired start",
     "build": "react-app-rewired build",
     "analyze": "cross-env ANALYZE=true react-app-rewired build",
     "test": "react-app-rewired test",
@@ -17,6 +17,7 @@
     "antd": "^4.3.5",
     "dva-core": "^2.0.2",
     "dva-loading": "^3.0.20",
+    "nprogress": "^0.2.0",
     "qiankun": "^2.0.24",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

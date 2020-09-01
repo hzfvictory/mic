@@ -56,7 +56,6 @@ const Index = () => {
     const cur = current - 1
     setUrl(`https://api.justcome.cn/admin/1068068178288054272/scenics?offset=${cur}&limit=10&includeShop=true`)
   }
-
   return (
     <Fragment>
       <Table rowSelection={rowSelection}

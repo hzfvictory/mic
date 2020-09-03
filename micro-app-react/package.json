@@ -14,7 +14,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "antd": "^4.3.5",
+    "antd": "^4.6.1",
     "dva-core": "^2.0.2",
     "dva-loading": "^3.0.20",
     "react": "^16.13.1",

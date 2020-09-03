@@ -1,6 +1,6 @@
 <template comments>
     <div>
-        <h1>注释<!--有注释的功能--></h1>
+        <h1 @click="queryToken">注释<!--有注释的功能--></h1>
 
         <el-card class="anoCard"
                  v-loading="fullscreenLoading"
@@ -71,22 +71,6 @@
         },
       }
     },
-    methods: {
-      async queryList() {
-        this.fullscreenLoading = true;
-        const {data: {items, page: {totalRecord}}} = await this.$fetch(`http://123.57.68.113:8064/role?pageSize=${this.paginationOptions.pageSize}&pageNum=${this.paginationOptions.currentPage}`, {
-          headers: {
-            Authentication: this.$store.getters.token
-          },
-        });
-        this.handlePageData(items, totalRecord);
-        this.fullscreenLoading = false;
-      },
-      resetTable() {
-        Object.assign(this.$data, this.$options.data());
-        this.fullscreenLoading = false;
-      }
-    },
     filters: {
       timeFormat(scope) {
         return moment(scope.row.createTime).format('YYY-MM-DD HH:mm:ss')
@@ -111,6 +95,28 @@
       //   h('li', {class: 'item3', onclick: 'Alert(1234)'}, ['Item3'])
       // ])
       // console.log(a);
+    },
+    methods: {
+      async queryList() {
+        this.fullscreenLoading = true;
+        const {data: {items, page: {totalRecord}}} = await this.$fetch(`http://123.57.68.113:8064/role?pageSize=${this.paginationOptions.pageSize}&pageNum=${this.paginationOptions.currentPage}`, {
+          headers: {
+            Authentication: this.$store.getters.token
+          },
+        });
+        this.handlePageData(items, totalRecord);
+        this.fullscreenLoading = false;
+      },
+      resetTable() {
+        Object.assign(this.$data, this.$options.data());
+        this.fullscreenLoading = false;
+      },
+      queryToken() {
+        if (!localStorage.getItem('token')) {
+          localStorage.setItem('token', '');
+        }
+        window.open('http://123.57.68.113:8063/order/list')
+      }
     },
   }
 </script>

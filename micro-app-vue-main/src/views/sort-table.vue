@@ -67,6 +67,7 @@
           {
             prop: "createTime",
             label: "创建时间",
+            width: 150,
           },
           {
             prop: "roleId",
@@ -81,6 +82,7 @@
           {
             prop: "createTime",
             label: "创建时间",
+            width: 150,
           },
           {
             prop: "roleId",
@@ -95,6 +97,7 @@
           {
             prop: "createTime",
             label: "创建时间",
+            width: 150,
           },
           {
             prop: 'roleName',

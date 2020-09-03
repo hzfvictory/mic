@@ -14,6 +14,8 @@ import "normalize.css"
 import "./index.less"
 import VueRouter from "vue-router";
 
+import actions from "./shared/actions"
+
 Vue.config.productionTip = false;
 Vue.config.silent = true;
 
@@ -33,7 +35,12 @@ let router = null;
  * 渲染函数
  * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
  */
-function render() {
+function render(props) {
+  if (props) {
+    // 注入 actions 实例
+    actions.setActions(props);
+  }
+
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
   router = new VueRouter({
     // 运行在主应用中时，添加路由命名空间 /vue

@@ -1,12 +1,13 @@
 <template>
     <el-container>
         <el-header>
-            <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick">
+            <el-tabs v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane label="列表页" name="/table-list"></el-tab-pane>
                 <el-tab-pane label="列表详情页" name="/table-detail"></el-tab-pane>
                 <el-tab-pane label="拖拽列表页" name="/table-sort-list"></el-tab-pane>
             </el-tabs>
         </el-header>
+
         <el-main>
             <router-view/>
         </el-main>

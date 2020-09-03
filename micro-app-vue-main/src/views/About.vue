@@ -18,7 +18,7 @@
             <span aria-hidden="true">c</span>
             <span aria-hidden="true">o</span>
             <span aria-hidden="true">m</span>
-            <span aria-hidden="true"> </span>
+            <span aria-hidden="true">e</span>
             <span aria-hidden="true">!</span>
         </h1>
 

@@ -1,5 +1,6 @@
 import Home from "@/pages/home"
 import List from "@/pages/list"
+import Detail from "@/pages/detail"
 import Login from "@/pages/login"
 
 export default {
@@ -16,6 +17,12 @@ export default {
       component: List,
       exact: true,
       title: '列表页',
+    },
+    {
+      path: '/detail/:id?',
+      component: Detail,
+      exact: true,
+      title: '详情页',
     },
     {
       path: '/login',

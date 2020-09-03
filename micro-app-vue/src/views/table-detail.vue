@@ -22,6 +22,7 @@
       },
       inputHandler(msg, e) {
         console.log(e.target.value)
+        localStorage.setItem('input', e.target.value)
       }
     },
     created() {

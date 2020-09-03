@@ -11,6 +11,12 @@
     />
 
     <title>Jquery App</title>
+    <style>
+        .table{
+            font-size: 14px;
+            table-layout: fixed;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +24,43 @@
 </body>
 <!-- 引入 jquery -->
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
+
+  const emptyAction = () => {
+    console.warn("当前执行的actions为空!");
+  }
+
+  class Actions {
+    // 默认值为空 Action
+    actions = {
+      onGlobalStateChange: emptyAction,
+      setGlobalState: emptyAction
+    };
+
+    /**
+     * 设置 actions
+     */
+    setActions(actions) {
+      this.actions = actions;
+    }
+
+    /**
+     * 映射
+     */
+    onGlobalStateChange(...args) {
+      return this.actions.onGlobalStateChange(...args);
+    }
+
+    /**
+     * 映射
+     */
+    setGlobalState(...args) {
+      return this.actions.setGlobalState(...args);
+    }
+  }
+
+  const actions = new Actions();
 
   const fetchVegetable = (cur, limit) => {
     return fetch(`https://api.justcome.cn/admin/1068068178288054272/scenics?offset=${cur}&limit=${limit}&includeShop=true`, {
@@ -30,36 +72,40 @@
    * 请求接口数据，构建 HTML
    */
   async function buildHTML() {
+    window.actions = actions
     const result = await fetchVegetable(1, 10);
     const list = result.data;
-    const html = `<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">名称</th>
-      <th scope="col">图片</th>
-      <th scope="col">时间</th>
-      <th scope="col">状态</th>
-      <th scope="col">操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    ${list
-      .map(
-        (item) => `
-    <tr>
-     <td>${item.name}</td>
-      <td>
-        <img style="width: 40px; height: 40px; border-radius: 100%;" src="${item.cover}"></img>
-      </td>
-      <td>${item.created_date}</td>
-      <td>${item.status}</td>
-      <td><a href="/menu/react/list">编辑</a></td>
-    </tr>
-      `
-      )
-      .join("")}
-  </tbody>
-</table>`;
+    const html =
+      `<table class="table">
+          <thead>
+            <tr>
+              <th width="180px" scope="col">id</th>
+              <th scope="col">名称</th>
+              <th scope="col">图片</th>
+              <th scope="col">时间</th>
+              <th scope="col">状态</th>
+              <th width="100px" scope="col">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list
+            .map(
+              (item) => `
+                <tr>
+                  <td>${item.id}</td>
+                  <td> <a href="/menu/react/detail/${item.id}" >${item.name}</a></td>
+                  <td>
+                    <img style="width: 40px; height: 40px; border-radius: 100%;" src="${item.cover}"></img>
+                  </td>
+                  <td>${item.created_date}</td>
+                  <td>${item.status}</td>
+                 <td><a href="javascript:void(0);" onclick="(()=> window.actions.setGlobalState({scen_id: '${item.id}'}) )()">编辑</a></td>
+                </tr>
+                  `
+            )
+            .join("")}
+          </tbody>
+      </table>`;
     return html;
   }
 
@@ -67,8 +113,14 @@
    * 渲染函数
    * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
    */
-  const render = async ($) => {
-    const html = await buildHTML();
+  const render = async ($, props) => {
+
+    if (props) {
+      // 注入 actions 实例
+      actions.setActions(props);
+    }
+
+    const html = await buildHTML(actions);
     $("#jquery-app-container").html(html);
     return Promise.resolve();
   };
@@ -89,21 +141,18 @@
        * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
        */
       bootstrap: () => {
-        console.log("MicroJqueryApp bootstraped");
         return Promise.resolve();
       },
       /**
        * 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
        */
-      mount: () => {
-        console.log("MicroJqueryApp mount");
-        return render($);
+      mount: (props) => {
+        return render($, props);
       },
       /**
        * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例
        */
       unmount: () => {
-        console.log("MicroJqueryApp unmount");
         return Promise.resolve();
       },
     };

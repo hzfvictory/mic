@@ -21,7 +21,7 @@ const Index = () => {
       title: '名称',
       dataIndex: 'name',
       render: (text) => {
-        return <a>{text}</a>
+        return <Link to="/">{text}</Link>
       }
     },
     {
@@ -41,9 +41,9 @@ const Index = () => {
     },
     {
       title: '操作',
-      render: () => {
+      render: (text, record) => {
         return (
-          <Link to="/">编辑</Link>
+          <Link to={'/detail/' + record.id}>编辑</Link>
         )
       }
     },

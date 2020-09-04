@@ -21,23 +21,30 @@ import startQiankun from "./micro";
  * @param  {object} options 额外的参数
  */
 
-//  全局的方法
+/*全局的方法*/
 Vue.prototype.$fetch = (url, options) => {
   return fetch(url, options).then(e => e.json()).then(val => {
     return val
   });
 };
 
-// 全局自定义指令
+/*全局自定义指令*/
 Vue.directive('gFocus', {
   inserted: function (el) {
     el.focus()
   }
 });
-// vuex
+/*vuex*/
 window._store = store
 
-startQiankun();
+
+/*
+* prefetch  预渲染
+* singular  是否为单实例场景
+* jsSandbox 是否开启沙箱
+* */
+
+startQiankun({singular: true, prefetch: true});
 
 
 new Vue({

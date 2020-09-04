@@ -55,6 +55,7 @@
                     <router-view v-if="isRouterAlive"/>
                 </keep-alive>
 
+                <!--TODO: 微前端  微应用-->
                 <div id="frame">
 
                 </div>
@@ -119,7 +120,7 @@
       title: 'vue微应用',
       key: '8',
       icon: 'el-icon-video-camera-solid',
-      path: '/menu/vue/table-list'
+      path: '/menu/vue/list'
     },
     {
       title: 'static微应用',

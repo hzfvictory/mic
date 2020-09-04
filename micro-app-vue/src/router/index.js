@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 export const routes = [
 
   {
-    path: '/table-list',
+    path: '/list',
     name: 'table-list',
     component: TableList,
     meta: {keepAlive: true},

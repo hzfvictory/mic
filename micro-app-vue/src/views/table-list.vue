@@ -18,6 +18,7 @@
     data() {
       return {
         loading: true,
+        jumpUrl: null,
         otherTableParams: { // table的参数
           props: {
             border: false,
@@ -73,6 +74,11 @@
     created() {
       this.$nextTick(this.queryList);
     },
+    mounted() {
+      actions.onGlobalStateChange((state) => {
+        this.jumpUrl = state.jumpUrl
+      }, true);
+    },
     methods: {
       async queryList() { // 子组件默认的请求名称
         this.loading = true
@@ -109,7 +115,8 @@
         //   }
         // })
         // window.open(newpage.href, '_blank');
-        actions.setGlobalState({scen_id: options.id});
+        // actions.setGlobalState({scen_id: options.id});
+        this.jumpUrl(`/menu/react/detail/${options.id}`)
       },
       listenMounted() {
         console.log('@hooks 侦查 ');
@@ -118,7 +125,7 @@
   }
 </script>
 
-<style type="text/scss" lang="scss" scoped>
+<style >
     .avatar {
         width: 40px;
         height: 40px;

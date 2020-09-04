@@ -12,9 +12,18 @@
 
     <title>Jquery App</title>
     <style>
-        .table{
+        .table {
             font-size: 14px;
             table-layout: fixed;
+        }
+
+        .table thead th {
+            background: #fafafa;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .table td, .table th {
+            border-top: 1px solid #f0f0f0;
         }
     </style>
 </head>
@@ -89,8 +98,8 @@
           </thead>
           <tbody>
             ${list
-            .map(
-              (item) => `
+        .map(
+          (item) => `
                 <tr>
                   <td>${item.id}</td>
                   <td> <a href="/menu/react/detail/${item.id}" >${item.name}</a></td>
@@ -102,8 +111,8 @@
                  <td><a href="javascript:void(0);" onclick="(()=> window.actions.setGlobalState({scen_id: '${item.id}'}) )()">编辑</a></td>
                 </tr>
                   `
-            )
-            .join("")}
+        )
+        .join("")}
           </tbody>
       </table>`;
     return html;

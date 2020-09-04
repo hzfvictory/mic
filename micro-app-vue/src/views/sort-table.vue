@@ -5,7 +5,6 @@
     >
         <el-table
                 :data="tableOptions.data"
-                border
                 size="small"
                 row-key='roleId'
                 ref="table"
@@ -15,7 +14,7 @@
                     prop="roleName"
                     label="拖拽区域"
             >
-                <template slot-scope="scope">
+                <template>
                     <el-button type="text" size="small" class="handle el-icon-rank"></el-button>
                 </template>
             </el-table-column>
@@ -111,7 +110,7 @@
     watch: {
       'tableOptions.data': {
         deep: true,
-        handler: function (newData) {
+        handler: function () {
           // console.log(newData);
         }
       }
@@ -131,7 +130,7 @@
             //选择元素
             _this.column[_this.column.length - 1].fixed = false
           },
-          onUnchoose: function (evt) {
+          onUnchoose: function () {
             // 取消选择元素
             _this.column[_this.column.length - 1].fixed = 'right'
 

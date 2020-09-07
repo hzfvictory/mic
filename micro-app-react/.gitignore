@@ -9,6 +9,7 @@
 /coverage
 
 .idea
+upload.sh
 
 # production
 /build

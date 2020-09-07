@@ -1,6 +1,11 @@
 <template comments>
     <div>
-        <h1 @click="queryToken">注释<!--有注释的功能--></h1>
+        <h3 @click="queryToken">获临时token取<!--有注释的功能--></h3>
+
+        <div>
+            <el-input style="width: 200px;margin-right: 20px" v-model="token" placeholder="添加token"></el-input>
+            <el-button type="primary" @click="addToken">添加</el-button>
+        </div>
 
         <el-card class="anoCard"
                  v-loading="fullscreenLoading"
@@ -65,6 +70,7 @@
     props: {},
     data() {
       return {
+        token: '',
         fullscreenLoading: true,
         paginationOptions: {
           pageSizes: [11, 21, 31, 40],
@@ -116,6 +122,9 @@
           localStorage.setItem('token', '');
         }
         window.open('http://123.57.68.113:8063/order/list')
+      },
+      addToken() {
+        localStorage.setItem('token', this.token);
       }
     },
   }

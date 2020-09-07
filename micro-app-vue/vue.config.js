@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  lintOnSave: false,  // 取消eslint
   devServer: {
     // 监听端口
     port: 10200,
@@ -25,5 +26,13 @@ module.exports = {
       // 按需加载相关，设置为 webpackJsonp_VueMicroApp 即可
       jsonpFunction: `webpackJsonp_VueMicroApp`,
     }
-  }
+  },
+  chainWebpack: config => {
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title = '微前端应用';
+        return args
+      })
+  },
 }

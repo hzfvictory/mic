@@ -12,13 +12,13 @@ const apps = [
   {
     name: "ReactMicroApp",
     entry: "//localhost:10100",
-    container: "#frame",
+    container: "#frame1",
     activeRule: genActiveRule("/menu/react")
   },
   {
     name: "VueMicroApp",
     entry: "//localhost:10200",
-    container: "#frame",
+    container: "#frame1",
     activeRule: "/vue"
   },
   // {
@@ -30,8 +30,8 @@ const apps = [
   {
     name: "StaticMicroApp",
     entry: "//localhost:10400",
-    container: "#frame",
-    activeRule: genActiveRule("/static")
+    container: "#frame1",
+    activeRule: genActiveRule("/menu/static")
   },
 ];
 

@@ -1,13 +1,11 @@
 <template>
-    <div>
-        <table-list
-                v-loading="loading"
-                @hook:mounted="listenMounted"
-                ref="table"
-                :multiple="true"
-                :otherTableParams="otherTableParams"
-                :tableColumn="column"/>
-    </div>
+    <table-list
+            v-loading="loading"
+            @hook:mounted="listenMounted"
+            ref="table"
+            :multiple="true"
+            :otherTableParams="otherTableParams"
+            :tableColumn="column"/>
 </template>
 <script>
   import actions from "@/shared/actions";
@@ -125,7 +123,7 @@
   }
 </script>
 
-<style >
+<style>
     .avatar {
         width: 40px;
         height: 40px;

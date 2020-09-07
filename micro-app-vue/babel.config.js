@@ -11,5 +11,10 @@ module.exports = {
             }
         ],
         '@babel/plugin-syntax-dynamic-import'
-    ]
+    ],
+    env: {
+        production: {
+            plugins: ['transform-remove-console']
+        }
+    }
 };

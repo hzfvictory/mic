@@ -7,7 +7,7 @@ module.exports = {
     config
       .plugin('html')
       .tap(args => {
-        args[0].title = '微前端';
+        args[0].title = '微前端主应用';
         return args
       })
   },
@@ -19,7 +19,7 @@ module.exports = {
     },
   },
   devServer: {
-    port: 9999,
+    port: 10000,
     open: true,
     disableHostCheck: true,
   },

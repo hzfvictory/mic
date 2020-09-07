@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,7 +10,7 @@
             rel="stylesheet"
     />
 
-    <title>Jquery App</title>
+    <title>static 微应用</title>
     <style>
         .table {
             font-size: 14px;
@@ -97,22 +97,23 @@
             </tr>
           </thead>
           <tbody>
-            ${list
-        .map(
+            ${
+        list.map(
           (item) => `
-                <tr>
-                  <td>${item.id}</td>
-                  <td> <a href="/menu/react/detail/${item.id}" >${item.name}</a></td>
-                  <td>
-                    <img style="width: 40px; height: 40px; border-radius: 100%;" src="${item.cover}"></img>
-                  </td>
-                  <td>${item.created_date}</td>
-                  <td>${item.status}</td>
-                 <td><a href="javascript:void(0);" onclick="(()=> window.actions.setGlobalState({scen_id: '${item.id}'}) )()">编辑</a></td>
-                </tr>
-                  `
+                    <tr>
+                      <td>${item.id}</td>
+                      <td> <a href="/menu/react/detail/${item.id}" >${item.name}</a></td>
+                      <td>
+                        <img style="width: 40px; height: 40px; border-radius: 100%;" src="${item.cover}"></img>
+                      </td>
+                      <td>${item.created_date}</td>
+                      <td>${item.status}</td>
+                     <td><a href="javascript:void(0);" onclick="(()=>  window.actions.setGlobalState({scen_id: '${item.id}'}) )()">编辑</a></td>
+                    </tr>
+                      `
         )
-        .join("")}
+          .join("")
+      }
           </tbody>
       </table>`;
     return html;
@@ -165,7 +166,6 @@
         return Promise.resolve();
       },
     };
-
   })(window);
 </script>
 </html>

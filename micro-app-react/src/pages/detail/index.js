@@ -6,12 +6,15 @@ const Index = (props) => {
   const {match: {params: {id}}} = props;
   const [{data: {data}, isLoading}] = useFetch(`https://api.justcome.cn/scenic/${id}?admin=true`, {})
 
+  const jumpGo = () => {
+    props.history.go(-1);
+  }
   return (
     <Fragment>
       {
         !isLoading &&
         <Descriptions title="景区概况" layout="vertical">
-          <Descriptions.Item label="景区名称"><Tag color="purple">{data.name}</Tag></Descriptions.Item>
+          <Descriptions.Item label="景区名称"><Tag color="purple" onClick={jumpGo}>{data.name}</Tag></Descriptions.Item>
           <Descriptions.Item label="景区标签">{data && data['tags'][0]}</Descriptions.Item>
           <Descriptions.Item label="景区开放时间">{data.open_time} - {data.close_time}</Descriptions.Item>
           <Descriptions.Item label="用时参考">{data.duration_text}</Descriptions.Item>

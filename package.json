@@ -6,12 +6,16 @@
   "scripts": {
     "examples:install": "npm-run-all --serial install:*",
     "examples:start": "npm-run-all --parallel start:*",
+    "examples:build": "npm-run-all --parallel build:*",
     "install:main": "cd micro-app-vue-main && yarn",
     "start:main": "cd micro-app-vue-main && yarn start",
+    "build:main": "cd micro-app-vue-main && yarn build",
     "install:react": "cd micro-app-react && yarn",
     "start:react": "cd micro-app-react && yarn start",
+    "build:react": "cd micro-app-react && yarn build",
     "install:vue": "cd micro-app-vue && yarn",
     "start:vue": "cd micro-app-vue && yarn start",
+    "build:vue": "cd micro-app-vue && yarn build",
     "install:static": "cd micro-app-static && yarn",
     "start:static": "cd micro-app-static && yarn start"
   },

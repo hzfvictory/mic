@@ -2,6 +2,8 @@ import React, {Fragment} from "react"
 import {Descriptions, Tag, Image} from 'antd';
 import {useFetch} from "../../hooks"
 
+import "./index.css"
+
 const Index = (props) => {
   const {match: {params: {id}}} = props;
   const [{data: {data}, isLoading}] = useFetch(`https://api.justcome.cn/scenic/${id}?admin=true`, {})

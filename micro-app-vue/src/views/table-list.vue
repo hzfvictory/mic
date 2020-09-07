@@ -82,7 +82,9 @@
         this.loading = true
         // 因为当前算是父组件，当执行到父组件的created周期才会执行它的子组件，所以这个时候子组件的data的一些方法获取不到，或者可以在mounted周期里面执行异步请求
         const {paginationOptions: {pageSize, currentPage}, handlePageData} = this.$refs.table; // 获取子组件mixins里面的参数
-        const {data, total} = await this.$fetch(`https://api.justcome.cn/admin/1068068178288054272/scenics?offset=${currentPage}&limit=${pageSize}&includeShop=true`, {
+        console.log(currentPage);
+
+        const {data, total} = await this.$fetch(`https://api.justcome.cn/admin/1068068178288054272/scenics?offset=${(currentPage - 1) * 10}&limit=${pageSize}&includeShop=true`, {
           headers: {
             Authentication: this.$store.getters.token
           },

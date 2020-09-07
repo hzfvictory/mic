@@ -54,9 +54,8 @@
                 <keep-alive :include="includes" exclude="" max="1">
                     <router-view v-if="isRouterAlive"/>
                 </keep-alive>
-
                 <!--TODO: 微前端  微应用-->
-                <div id="frame">
+                <div id="wrapper">
 
                 </div>
             </el--main>

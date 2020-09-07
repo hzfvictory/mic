@@ -81,7 +81,6 @@
    * 请求接口数据，构建 HTML
    */
   async function buildHTML() {
-    window.actions = actions
     const result = await fetchVegetable(1, 10);
     const list = result.data;
     const html =
@@ -130,7 +129,7 @@
       actions.setActions(props);
     }
 
-    const html = await buildHTML(actions);
+    const html = await buildHTML();
     $("#jquery-app-container").html(html);
     return Promise.resolve();
   };
@@ -157,6 +156,7 @@
        * 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
        */
       mount: (props) => {
+        window.actions = actions
         return render($, props);
       },
       /**

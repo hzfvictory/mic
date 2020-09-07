@@ -55,7 +55,7 @@ const Index = () => {
   };
   const handleChange = (current) => {
     setCurrent(current)
-    const cur = current - 1
+    const cur = (current - 1) * 10
     setUrl(`https://api.justcome.cn/admin/1068068178288054272/scenics?offset=${cur}&limit=10&includeShop=true`)
   }
   return (

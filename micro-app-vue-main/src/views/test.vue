@@ -1,6 +1,6 @@
 <template comments>
     <div>
-        <h3 @click="queryToken">获临时token取<!--有注释的功能--></h3>
+        <h3 @click="queryToken" class="el-token">获临时token取<!--有注释的功能--></h3>
 
         <div>
             <el-input style="width: 200px;margin-right: 20px" v-model="token" placeholder="添加token"></el-input>
@@ -131,5 +131,7 @@
 </script>
 
 <style type="text/scss" lang="scss" scoped>
-
+    .el-token {
+        color: #5daf34;
+    }
 </style>

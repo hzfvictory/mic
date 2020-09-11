@@ -15,6 +15,7 @@ import "./index.less"
 import VueRouter from "vue-router";
 
 import actions from "./shared/actions"
+import reduxStore from "./shared/store"
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;
@@ -39,6 +40,11 @@ function render(props) {
   if (props) {
     // 注入 actions 实例
     actions.setActions(props);
+    reduxStore.setStore(props.store)
+    if (props.store) {
+      // 注入redux 实例
+      reduxStore.setStore(props.store)
+    }
   }
 
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
@@ -49,6 +55,13 @@ function render(props) {
     routes,
   });
 
+
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+  const originalPush = VueRouter.prototype.push
+  VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+  }
+
   // 挂载应用
   instance = new Vue({
     router,
@@ -57,8 +70,17 @@ function render(props) {
   }).$mount("#app");
 }
 
+function createEvent(params, eventName = 'emit') {
+  return new CustomEvent(eventName, {detail: params});
+}
+
 // 独立运行时，直接挂载应用
 if (!window.__POWERED_BY_QIANKUN__) {
+  window.cEvt = createEvent({
+    handelData: () => console.warn('不能运行'),
+    jumpUrl: () => console.warn('不能运行')
+  })
+
   render()
 }
 

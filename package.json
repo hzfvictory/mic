@@ -31,7 +31,8 @@
   "homepage": "",
   "devDependencies": {
     "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "qiankun": "2.0.20"
   }
 }
-
-

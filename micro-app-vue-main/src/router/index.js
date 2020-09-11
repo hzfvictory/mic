@@ -1,9 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const TableList = () => import(/* webpackChunkName: "group-foo" */ '../views/table-list.vue')
-const SortTable = () => import(/* webpackChunkName: "group-foo" */ '../views/sort-table.vue')
-const Temp = () => import(/* webpackChunkName: "group-foo" */ '../views/temp.vue')
+// const TestTable = () => import(/* webpackChunkName: "test-table" */ '../views/test.vue')
+const TableList = () => import(/* webpackChunkName: "table-list" */ '../views/table-list.vue')
+const SortTable = () => import(/* webpackChunkName: "table-sort" */ '../views/sort-table.vue')
+const Temp = () => import(/* webpackChunkName: "temp" */ '../views/temp.vue')
+const Home = () => import(/* webpackChunkName: "home" */ '../views/home.vue')
+const About = () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+const Menu = () => import(/* webpackChunkName: "menu" */ '../views/menu.vue')
+
+
+import TestTable from "../views/test.vue"
+// import TableList from "../views/table-list.vue"
+// import SortTable from "../views/sort-table.vue"
+// import Temp from "../views/temp.vue"
+// import Home from "../views/home.vue"
+// import About from "../views/About.vue"
+// import Menu from "../views/menu.vue"
 
 Vue.use(VueRouter);
 
@@ -12,24 +25,24 @@ export const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import('../views/home.vue'),
+    component: Home,
   },
   {
     path: '/wel',
     name: 'About',
-    component: () => import('../views/About.vue'),
+    component: About,
     meta: {keepAlive: true}
   },
   {
     path: '/menu',
     name: '右键菜单',
-    component: () => import('../views/menu.vue')
+    component: Menu
 
   },
   {
     path: '/test',
     name: 'test',
-    component: () => import('../views/test.vue'),
+    component: TestTable,
 
   },
   {
@@ -37,7 +50,7 @@ export const routes = [
     name: 'table-list',
     component: TableList,
     meta: {keepAlive: true},
-    props: (route) => ({
+    props: () => ({
       id: 1008611
     })
   },
@@ -50,7 +63,7 @@ export const routes = [
     path: '/sort-table',
     name: 'sort-table',
     component: SortTable,
-    props: (route) => ({
+    props: () => ({
       id: 1008611
     })
   },
@@ -64,8 +77,13 @@ export const routes = [
 const router = new VueRouter({
   mode: 'history',
   routes
-
 });
+
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 export default router
 

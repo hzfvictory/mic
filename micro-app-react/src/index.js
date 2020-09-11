@@ -5,13 +5,17 @@ import App from './App';
 import {ConfigProvider} from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
-
+import store from "@/shared/store"
 
 /**
  * 渲染函数
  * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
  */
-function render() {
+function render(props) {
+  if (props && props.store) {
+    // 注入redux 实例
+    store.setStore(props.store)
+  }
   ReactDOM.render(
     <ConfigProvider
       autoInsertSpaceInButton={true}
@@ -24,6 +28,14 @@ function render() {
 
 // 独立运行时，直接挂载应用
 if (!window.__POWERED_BY_QIANKUN__) {
+  function createEvent(params, eventName = 'emit') {
+    return new CustomEvent(eventName, {detail: params});
+  }
+
+  window.cEvt = createEvent({
+    handelData: () => console.warn('不能运行'),
+    jumpUrl: () => console.warn('不能运行')
+  })
   render();
 }
 

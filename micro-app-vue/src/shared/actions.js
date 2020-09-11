@@ -1,3 +1,4 @@
+/*乾坤提供的通信方案*/
 const emptyAction = () => {
   console.warn("当前执行的actions为空!");
 }
@@ -13,8 +14,6 @@ class Actions {
    * 设置 actions
    */
   setActions(actions) {
-    console.log(actions);
-
     this.actions = actions;
   }
 

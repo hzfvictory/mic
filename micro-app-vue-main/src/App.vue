@@ -67,7 +67,6 @@
   import {mapState, mapGetters} from 'vuex'
   import actions from "@/shared/actions";
 
-
   const menus = [
     // {
     //   title: 'welcome',
@@ -133,7 +132,7 @@
     name: 'app',
     data() {
       return {
-        a: {b: 2},
+        obj: {},
         isRouterAlive: true,
         menus,
         tableMenu,
@@ -158,6 +157,19 @@
           console.log(1212, this.$router.history.push(`/menu/react/detail/${state.scen_id}`));
         }
       });
+
+
+      // /*TODO: 基于浏览器原生事件做通信*/
+      // window.evt = document.createEvent("HTMLEvents");
+      // window.evt.initEvent("handleData", false, false);
+      // document.addEventListener('handleData', this.handelData, false);
+
+      /*TODO: 基于浏览器原生事件做通信 可传值 */
+      function createEvent(params, eventName = 'emit') {
+        return new CustomEvent(eventName, {detail: params});
+      }
+
+      window.cEvt = createEvent({handelData: this.handelData, jumpUrl: this.jumpUrl});
     },
     computed: {
       activeMenu() {
@@ -173,6 +185,13 @@
       reload() {
         this.isRouterAlive = false;
         this.$nextTick(() => (this.isRouterAlive = true))
+      },
+      jumpUrl(url) {
+        this.$router.history.push(url)
+      },
+      handelData(...opt) {
+        this.obj = Object.assign(this.obj, ...opt);
+        return this.obj
       }
     }
   }

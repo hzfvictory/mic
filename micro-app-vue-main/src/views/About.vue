@@ -21,7 +21,6 @@
             <span aria-hidden="true">e</span>
             <span aria-hidden="true">!</span>
         </h1>
-
     </div>
 </template>
 
@@ -33,11 +32,6 @@
     data() {
       return {}
     },
-    methods: {
-      drawCanvas() {
-        console.log(1);
-      }
-    },
     filters: {},
     watch: {},
     computed: {},
@@ -47,7 +41,7 @@
     },
     mounted() {
       let canvas = this.$refs.canvas;
-      var ctx = canvas.getContext('2d');
+      let ctx = canvas.getContext('2d');
       ctx.beginPath();
       ctx.moveTo(75, 50);
       ctx.lineTo(100, 75);
@@ -55,8 +49,12 @@
       ctx.fillStyle = "#fff";
       ctx.globalAlpha = 0.2;
       ctx.fill();
-      console.log(ctx);
-    }
+    },
+    methods: {
+      drawCanvas() {
+        console.log(12)
+      }
+    },
   }
 </script>
 

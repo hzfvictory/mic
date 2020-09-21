@@ -15,7 +15,7 @@ const menus = [
     path: "/menu/static"
   },
   {
-    key: "StaticMicroApp",
+    key: "staticMicroApp",
     title: "Static微应用",
     path: "/menu2/static"
   }

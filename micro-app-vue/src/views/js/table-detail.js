@@ -42,11 +42,12 @@ export default {
     // 返回值是取消订阅
     const unSubscribe = store.subscribe(() => {
       // 注册订阅函数
-      console.log(store.getState(), '订阅方法');
+      console.log(store.getState(), 'vue  -  订阅方法');
     })
     console.log(unSubscribe);
     this.$once('hook:beforeDestroy', () => {
       document.removeEventListener('emit', this.queryData);
+      unSubscribe()
     })
   },
   beforeRouteLeave(to, from, next) {

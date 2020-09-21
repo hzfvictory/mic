@@ -8,10 +8,9 @@ import store from './models/dva';
 
 import 'antd/dist/antd.css';
 
-const BASE_NAME = window.__POWERED_BY_QIANKUN__ ? "/menu/react" : "";
 
-
-function App() {
+function App(props) {
+  const BASE_NAME = window.__POWERED_BY_QIANKUN__ ? (props.basePath && props.basePath) : "";
   return (
     <Provider store={store}>
       <Router basename={BASE_NAME}>

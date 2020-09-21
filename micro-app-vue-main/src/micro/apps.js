@@ -4,8 +4,14 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const isEnter = isProduction ? '120.79.229.197' : 'localhost';
 
-function genActiveRule(routerPrefix) {
+const genActiveRule = (routerPrefix) => {
   return location => location.pathname.startsWith(routerPrefix);
+}
+
+const isVueApp = (routerPrefix) => {
+  return (location) => {
+    return location.pathname.includes(routerPrefix) || location.pathname.includes('/menu/react')
+  }
 }
 
 
@@ -18,27 +24,27 @@ const apps = [
    * props 向子组件传递信息
    */
   {
-    name: "ReactMicroApp",
+    name: "reactMicroApp",
     entry: `//${isEnter}:10100`,
     container: "#wrapper",
     activeRule: genActiveRule("/menu/react"),
-    props: {store},
+    props: {store, basePath: '/menu/react'},
   },
   {
-    name: "VueMicroApp",
+    name: "vueMicroApp",
     entry: `//${isEnter}:10200`,
     container: "#wrapper-vue",
     activeRule: genActiveRule("/menu/vue"),
-    props: {store},
+    props: {store, basePath: '/menu/vue'},
   },
   // {
-  //   name: "AngularMicroApp",
+  //   name: "angularMicroApp",
   //   entry: "//localhost:10300",
   //   container: "#frame",
   //   activeRule: "/angular"
   // },
   {
-    name: "StaticMicroApp",
+    name: "staticMicroApp",
     entry: `//${isEnter}:10400`,
     container: "#wrapper",
     activeRule: genActiveRule("/static")

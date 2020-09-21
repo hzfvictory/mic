@@ -152,16 +152,14 @@
     created() {
     },
     mounted() {
-
       actions.onGlobalStateChange((state, prevState) => {
         // state: 变更后的状态; prevState: 变更前的状态
         console.log("主应用观察者：改变前的 ", prevState);
         console.log("主应用观察者：改变后的 ", state);
         if (state.scen_id) {
-          console.log(1212, this.$router.history.push(`/menu/react/detail/${state.scen_id}`));
+          console.log('跳转到详情页', this.$router.history.push(`/menu/react/detail/${state.scen_id}`));
         }
       });
-
 
       // /*TODO: 基于浏览器原生事件做通信*/
       // window.evt = document.createEvent("HTMLEvents");

@@ -15,7 +15,7 @@ const Index = (props) => {
 
     // 返回值是取消订阅
     const unSubscribe = store.subscribe(() => {
-      console.log(store.getState(), '订阅方法');
+      console.log(store.getState(), 'react  - 订阅方法');
     })
 
     return () => {

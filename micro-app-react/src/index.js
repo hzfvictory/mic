@@ -20,7 +20,7 @@ function render(props) {
     <ConfigProvider
       autoInsertSpaceInButton={true}
       locale={zhCN}>
-      <App/>
+      <App basePath={props && props.basePath}/>
     </ConfigProvider>,
     document.getElementById('root')
   );
@@ -44,14 +44,14 @@ if (!window.__POWERED_BY_QIANKUN__) {
  * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
  */
 export async function bootstrap() {
-  console.log("ReactMicroApp bootstraped");
+  console.log("reactMicroApp bootstraped");
 }
 
 /**
  * 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
  */
 export async function mount(props) {
-  console.log("ReactMicroApp mount", props);
+  console.log("reactMicroApp mount", props);
   render(props);
 }
 
@@ -59,6 +59,6 @@ export async function mount(props) {
  * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例
  */
 export async function unmount() {
-  console.log("ReactMicroApp unmount");
+  console.log("reactMicroApp unmount");
   ReactDOM.unmountComponentAtNode(document.getElementById("root"));
 }

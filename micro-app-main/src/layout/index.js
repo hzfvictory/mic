@@ -19,12 +19,12 @@ const menus = [
     path: "/menu/list"
   },
   {
-    key: "ReactMicroApp",
+    key: "reactMicroApp",
     title: "react微应用",
     path: "/menu/react"
   },
   {
-    key: "StaticMicroApp",
+    key: "staticMicroApp",
     title: "vue微应用",
     path: "/menu/vue"
   },

@@ -50,7 +50,7 @@ function render(props) {
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
   router = new VueRouter({
     // 运行在主应用中时，添加路由命名空间 /vue
-    base: window.__POWERED_BY_QIANKUN__ ? "/menu/vue" : "/",
+    base: window.__POWERED_BY_QIANKUN__ ? props.basePath : "/",
     mode: "history",
     routes,
   });
@@ -69,6 +69,8 @@ function render(props) {
     render: (h) => h(App),
   }).$mount("#app");
 }
+
+
 
 function createEvent(params, eventName = 'emit') {
   return new CustomEvent(eventName, {detail: params});
@@ -89,14 +91,14 @@ if (!window.__POWERED_BY_QIANKUN__) {
  * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
  */
 export async function bootstrap() {
-  console.log("VueMicroApp bootstraped");
+  console.log("vueMicroApp bootstraped");
 }
 
 /**
  * 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
  */
 export async function mount(props) {
-  console.log("VueMicroApp mount", props);
+  console.log("vueMicroApp mount", props);
   render(props);
 }
 
@@ -104,7 +106,7 @@ export async function mount(props) {
  * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例
  */
 export async function unmount() {
-  console.log("VueMicroApp unmount");
+  console.log("vueMicroApp unmount");
   instance.$destroy();
   instance = null;
   router = null;

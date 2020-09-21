@@ -55,9 +55,13 @@
                     <router-view v-if="isRouterAlive"/>
                 </keep-alive>
                 <!--TODO: 微前端  微应用-->
+                <div id="wrapper-vue">
+
+                </div>
                 <div id="wrapper">
 
                 </div>
+
             </el--main>
         </el-container>
     </el-container>

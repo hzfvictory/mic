@@ -27,7 +27,7 @@ const apps = [
   {
     name: "VueMicroApp",
     entry: `//${isEnter}:10200`,
-    container: "#wrapper",
+    container: "#wrapper-vue",
     activeRule: genActiveRule("/menu/vue"),
     props: {store},
   },

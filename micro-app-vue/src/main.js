@@ -37,6 +37,7 @@ let router = null;
  * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
  */
 function render(props) {
+  const {container} = props || {};
   if (props) {
     // 注入 actions 实例
     actions.setActions(props);
@@ -67,9 +68,8 @@ function render(props) {
     router,
     store,
     render: (h) => h(App),
-  }).$mount("#app");
+  }).$mount(container ? container.querySelector('#app') : '#app');
 }
-
 
 
 function createEvent(params, eventName = 'emit') {
@@ -108,6 +108,7 @@ export async function mount(props) {
 export async function unmount() {
   console.log("vueMicroApp unmount");
   instance.$destroy();
+  instance.$el.innerHTML = '';
   instance = null;
   router = null;
 }

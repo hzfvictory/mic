@@ -40,11 +40,11 @@ window._store = store
 /*
 * prefetch  预渲染
 * singular  是否为 单实例 场景
-* jsSandbox 是否开启沙箱  关闭后兼容IE（但要承担关掉沙箱后子应用之间可能造成冲突的风险）
+* sandbox   是否开启沙箱  关闭后兼容IE（但要承担关掉沙箱后子应用之间可能造成冲突的风险）
 * fetch     自定义的fetch方法
 * */
 
-startQiankun({singular: true, prefetch: true});
+startQiankun({singular: true, prefetch: true });
 
 new Vue({
   router,

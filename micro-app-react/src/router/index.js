@@ -25,7 +25,7 @@ export default {
       title: '详情页',
     },
     {
-      path: '/login',
+      path: '/login/:route?',
       component: Login,
       exact: true,
       title: '登录页',

@@ -1,6 +1,7 @@
 <template>
     <el-container>
         <el-header>
+            <h2 class="experimentalStyleIsolation">查看样式沙箱</h2>
             <el-tabs v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane label="列表页" name="/list"></el-tab-pane>
                 <el-tab-pane label="列表详情页" name="/table-detail"></el-tab-pane>
@@ -31,3 +32,9 @@
     }
   };
 </script>
+<style>
+    .experimentalStyleIsolation {
+        color: #eb2f96;
+        font-size: 16px;
+    }
+</style>

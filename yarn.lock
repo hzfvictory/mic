@@ -143,10 +143,10 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
 
-import-html-entry@^1.7.0:
+import-html-entry@^1.9.0:
   version "1.9.1"
-  resolved "https://registry.npmjs.org/import-html-entry/-/import-html-entry-1.9.1.tgz#91a846ab3ddad1f9a4b876a595d1e8b28bef7609"
-  integrity sha512-tWxzA981ZulXzO/5j6BFGiFaaT7ufaLkeWRMQT7oD1IWF/TG2UFzaibK5/8fo8DcmcOo/vOzA4dUoyNnPb9YNg==
+  resolved "https://registry.npm.taobao.org/import-html-entry/download/import-html-entry-1.9.1.tgz?cache=0&sync_timestamp=1599035551567&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fimport-html-entry%2Fdownload%2Fimport-html-entry-1.9.1.tgz#91a846ab3ddad1f9a4b876a595d1e8b28bef7609"
+  integrity sha1-kahGqz3a0fmkuHalldHosovvdgk=
   dependencies:
     "@babel/runtime" "^7.7.2"
 
@@ -301,13 +301,13 @@ pify@^3.0.0:
   resolved "https://registry.npmjs.org/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
-qiankun@2.0.20:
-  version "2.0.20"
-  resolved "https://registry.npmjs.org/qiankun/-/qiankun-2.0.20.tgz#df4ed9a1989b8b2a5c7a7c7aaabd20ab253e437d"
-  integrity sha512-UDMsJ/XkAW4eeyB1xjQZ6An5rYYGEyKVHNedPz5hGM7AtW/HH50Vq860ItpchRyG8V27227AjCLB//+HzPBIkg==
+qiankun@2.0.25:
+  version "2.0.25"
+  resolved "https://registry.npm.taobao.org/qiankun/download/qiankun-2.0.25.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqiankun%2Fdownload%2Fqiankun-2.0.25.tgz#c1807ea03dd2ff420a7182469cb8458cae15e80c"
+  integrity sha1-wYB+oD3S/0IKcYJGnLhFjK4V6Aw=
   dependencies:
     "@babel/runtime" "^7.10.5"
-    import-html-entry "^1.7.0"
+    import-html-entry "^1.9.0"
     lodash "^4.17.11"
     single-spa "^5.3.1"
     tslib "^1.10.0"

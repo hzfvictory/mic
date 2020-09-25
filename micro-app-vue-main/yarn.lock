@@ -6941,10 +6941,10 @@ q@^1.1.2:
   resolved "https://registry.npm.taobao.org/q/download/q-1.5.1.tgz?cache=0&sync_timestamp=1566282953114&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fq%2Fdownload%2Fq-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qiankun@^2.0.24:
-  version "2.0.24"
-  resolved "https://registry.npmjs.org/qiankun/-/qiankun-2.0.24.tgz#a73865ef626c66ee267b266444df013dc2f856cb"
-  integrity sha512-AIQ2JEKcGR+nJZPiZT7R9pzN5f+n4qCwlTWnhRMQ74Sem6reGQ/E3MhUrpMrXIDKmKA4kh8djmPl5vsfBQ2b+A==
+qiankun@^2.0.25:
+  version "2.0.25"
+  resolved "https://registry.npm.taobao.org/qiankun/download/qiankun-2.0.25.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqiankun%2Fdownload%2Fqiankun-2.0.25.tgz#c1807ea03dd2ff420a7182469cb8458cae15e80c"
+  integrity sha1-wYB+oD3S/0IKcYJGnLhFjK4V6Aw=
   dependencies:
     "@babel/runtime" "^7.10.5"
     import-html-entry "^1.9.0"

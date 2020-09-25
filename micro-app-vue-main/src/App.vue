@@ -150,6 +150,7 @@
       }
     },
     created() {
+
     },
     mounted() {
       actions.onGlobalStateChange((state, prevState) => {

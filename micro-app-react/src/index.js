@@ -6,23 +6,27 @@ import {ConfigProvider} from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 import store from "@/shared/store"
+import * as serviceWorker from './serviceWorker';
 
 /**
  * 渲染函数
  * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
  */
 function render(props) {
-  if (props && props.store) {
+  const {container, basePath} = props;
+
+  if (props.store) {
     // 注入redux 实例
     store.setStore(props.store)
   }
+
   ReactDOM.render(
     <ConfigProvider
       autoInsertSpaceInButton={true}
       locale={zhCN}>
-      <App basePath={props && props.basePath}/>
+      <App basePath={basePath}/>
     </ConfigProvider>,
-    document.getElementById('root')
+    container ? container.querySelector('#root') : document.querySelector('#root')
   );
 }
 
@@ -36,7 +40,7 @@ if (!window.__POWERED_BY_QIANKUN__) {
     handelData: () => console.warn('不能运行'),
     jumpUrl: () => console.warn('不能运行')
   })
-  render();
+  render({});
 }
 
 /**
@@ -58,7 +62,9 @@ export async function mount(props) {
 /**
  * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例
  */
-export async function unmount() {
-  console.log("reactMicroApp unmount");
-  ReactDOM.unmountComponentAtNode(document.getElementById("root"));
+export async function unmount(props) {
+  const {container} = props;
+  ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
 }
+
+serviceWorker.unregister();

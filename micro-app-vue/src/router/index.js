@@ -15,7 +15,7 @@ export const routes = [
     meta: {keepAlive: true},
   },
   {
-    path: '/table-detail',
+    path: '/table-detail/:route?/:id?',
     name: 'table-detail',
     component: () => import('../views/table-detail.vue'),
   },

@@ -60,6 +60,8 @@ const Index = () => {
   }
   return (
     <Fragment>
+      <h2 className="experimentalStyleIsolation">查看样式沙箱</h2>
+
       <Table rowSelection={rowSelection}
              locale={{emptyText: '暂无数据'}}
              rowKey="id"

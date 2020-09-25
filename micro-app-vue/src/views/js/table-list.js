@@ -61,13 +61,33 @@ export default {
   inject: ["reload"],
   created() {
     this.$nextTick(this.queryList);
+
+    /*子应用监听只会生效一次*/
+    actions.onGlobalStateChange((state) => {
+      this.jumpUrl = state.jumpUrl
+      console.log(11111, '微应用观察者');
+    }, true);
   },
   mounted() {
     actions.onGlobalStateChange((state) => {
       this.jumpUrl = state.jumpUrl
+      console.log(22222, '微应用观察者');
     }, true);
   },
   methods: {
+    seeHandle(options) {
+      // let newpage = this.$router.resolve({
+      //   name: 'messageInfo',
+      //   path: 'home',
+      //   query: {
+      //     objectType: 1,
+      //     infoId: 111
+      //   }
+      // })
+      // window.open(newpage.href, '_blank');
+      actions.setGlobalState({msg: options.id});
+      // this.jumpUrl(`/menu/react/detail/${options.id}`)
+    },
     async queryList() { // 子组件默认的请求名称
       this.loading = true
       // 因为当前算是父组件，当执行到父组件的created周期才会执行它的子组件，所以这个时候子组件的data的一些方法获取不到，或者可以在mounted周期里面执行异步请求
@@ -92,19 +112,6 @@ export default {
         content: '你好坏啊，我好喜欢',
         duration: 6000
       })
-    },
-    seeHandle(options) {
-      // let newpage = this.$router.resolve({
-      //   name: 'messageInfo',
-      //   path: 'home',
-      //   query: {
-      //     objectType: 1,
-      //     infoId: 111
-      //   }
-      // })
-      // window.open(newpage.href, '_blank');
-      // actions.setGlobalState({scen_id: options.id});
-      this.jumpUrl(`/menu/react/detail/${options.id}`)
     },
     listenMounted() {
       console.log('@hooks 侦查 ');

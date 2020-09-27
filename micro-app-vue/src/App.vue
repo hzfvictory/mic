@@ -9,6 +9,8 @@
             </el-tabs>
         </el-header>
 
+        <br>
+
         <el-main>
             <router-view/>
         </el-main>
@@ -34,7 +36,7 @@
 </script>
 <style>
     .experimentalStyleIsolation {
-        color: #eb2f96;
+        color: orangered;
         font-size: 16px;
     }
 </style>

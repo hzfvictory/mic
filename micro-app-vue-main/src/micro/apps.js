@@ -17,10 +17,11 @@ const isVueApp = (routerPrefix) => {
 
 const apps = [
   /**
+   * https://qiankun.umijs.org/zh/api#registermicroappsapps-lifecycles
    * name: 微应用名称 - 具有唯一性
-   * entry: 微应用入口 - 通过该地址加载微应用
+   * entry: 微应用入口 - 通过该地址加载微应用  string | { scripts?: string[]; styles?: string[]; html?: string }
    * container: 微应用挂载节点 - 微应用加载完成后将挂载在该节点上
-   * activeRule: 浏览器url发生变化会调用这个函数，activeRule 返回 true 时表明该子应用需要被激活。
+   * activeRule: 浏览器url发生变化会调用这个函数，activeRule 返回 true 时表明该子应用需要被激活； 也可以 activeRule: '/app1' 或 activeRule: ['/app1', '/app2']
    * props 向子组件传递信息
    */
   {

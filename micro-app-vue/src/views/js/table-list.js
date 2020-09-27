@@ -49,8 +49,9 @@ export default {
           width: '118',
           label: "操作",
           list: [
-            {title: '编辑', disabled: false, styles: {color: '#409EFF'}, cb: this.seeHandle},
+            {title: '通信', disabled: false, styles: {color: '#409EFF'}, cb: this.seeHandle},
             {title: '弹框', cb: this.editHandle},
+            {title: '查看', cb: this.jumpDetail},
           ],
         },
       ],
@@ -75,7 +76,7 @@ export default {
     }, true);
   },
   methods: {
-    seeHandle(options) {
+    jumpDetail(options) {
       // let newpage = this.$router.resolve({
       //   name: 'messageInfo',
       //   path: 'home',
@@ -85,8 +86,11 @@ export default {
       //   }
       // })
       // window.open(newpage.href, '_blank');
+      this.jumpUrl(`/menu/react/detail/${options.id}`)
+    },
+    seeHandle(options) {
+      // 改变值
       actions.setGlobalState({msg: options.id});
-      // this.jumpUrl(`/menu/react/detail/${options.id}`)
     },
     async queryList() { // 子组件默认的请求名称
       this.loading = true

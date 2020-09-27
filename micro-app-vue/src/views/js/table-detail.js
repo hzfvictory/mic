@@ -33,6 +33,8 @@ export default {
     this.$once('hook:beforeDestroy', () => {
       document.removeEventListener('emit', this.queryData);
       unSubscribe()
+
+      this.microApp && this.microApp.unmount();
     })
   },
   beforeRouteLeave(to, from, next) {

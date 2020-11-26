@@ -34,10 +34,14 @@ const Index = (props) => {
   }
   const dispatchRedux = () => {
     console.log(store.getState(), 'redux数据');
+
   }
   const jumpUrl = () => {
     store.getState().jumpUrl('/menu/vue/table-detail')
   }
+
+
+
   return (
     <Fragment>
       <Descriptions title="操作/通信" layout="vertical">

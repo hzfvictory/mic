@@ -25,6 +25,8 @@
 </template>
 
 <script>
+  import {concat, mergeWith} from 'lodash';
+
   export default {
     name: 'app',
     components: {},
@@ -36,6 +38,20 @@
     watch: {},
     computed: {},
     async created() {
+
+      function customizer(objValue, srcValue) {
+        console.log(objValue, srcValue);
+        if (_.isArray(objValue)) {
+          return concat(objValue,srcValue);
+        }
+      }
+
+      var object = {'a': [1], 'b': [2], 'c': [5]};
+      var other = {'a': [3], 'b': [4], 'c': [6]};
+
+      console.log(mergeWith(object, other, customizer));
+
+
       // const a = await fetch('www.jing999.cn/shay').then(res => res.json());
       // console.log(a.aaa);
     },

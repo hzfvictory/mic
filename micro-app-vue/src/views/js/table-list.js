@@ -68,12 +68,16 @@ export default {
       this.jumpUrl = state.jumpUrl
       console.log(11111, '微应用观察者');
     }, true);
+    // TODO :
+    window.aaaaa = '实验多实例'
+
   },
   mounted() {
     actions.onGlobalStateChange((state) => {
       this.jumpUrl = state.jumpUrl
       console.log(22222, '微应用观察者');
     }, true);
+    console.log(window, '如果是多实例的  在控制台是打印不出来的');
   },
   methods: {
     jumpDetail(options) {

@@ -1,13 +1,13 @@
 /*乾坤提供的通信方案*/
 const emptyAction = () => {
-  console.warn("当前执行的actions为空!");
-}
+  console.warn('当前执行的actions为空!');
+};
 
 class Actions {
   // 默认值为空 Action
   actions = {
     onGlobalStateChange: emptyAction,
-    setGlobalState: emptyAction
+    setGlobalState: emptyAction,
   };
 
   /**

@@ -9,12 +9,12 @@ const table = {
         multipleSelection: [], // 列表多选
       },
       tableOptionsMethod: {
-        'selection-change': this.handleSelectionChange
+        'selection-change': this.handleSelectionChange,
       },
       paginationOptions: {
-        class: "fyDiv",
+        class: 'fyDiv',
         background: true, // 带有背景色
-        layout: "total, sizes, prev, pager, next",
+        layout: 'total, sizes, prev, pager, next',
         pageSizes: [10, 20, 30, 40],
         total: 0, // 应用列表总数量
         pageSize: 12, // 当前分页数量
@@ -23,9 +23,9 @@ const table = {
       },
       paginationOptionsMethod: {
         'size-change': this.handleSizeChange,
-        'current-change': this.handleCurrentChange
-      }
-    }
+        'current-change': this.handleCurrentChange,
+      },
+    };
   },
   methods: {
     // 获取数据回调处理分页和data
@@ -33,37 +33,37 @@ const table = {
       this.tableOptions.data = data;
       // 如果还有下一页，则显示分页插件
       if (total > 10) {
-        this.paginationOptions.showPage = false
+        this.paginationOptions.showPage = false;
       } else {
         this.paginationOptions.showPage = true;
         this.paginationOptions.currentPage = 1;
-        this.paginationOptions.pageSize = 10
+        this.paginationOptions.pageSize = 10;
       }
-      this.paginationOptions.total = total
+      this.paginationOptions.total = total;
     },
     // 选项变化
     handleSelectionChange(multipleSelection) {
       console.log(multipleSelection, '选中');
-      this.tableOptions.multipleSelection = multipleSelection
+      this.tableOptions.multipleSelection = multipleSelection;
     },
     // 改变页数
     handleCurrentChange(currentPage) {
       this.paginationOptions.currentPage = currentPage;
-      this.queryList ? this.queryList() : this.$parent.queryList()
+      this.queryList ? this.queryList() : this.$parent.queryList();
     },
     // 选择页数
     handleSizeChange(currentSize) {
       this.paginationOptions.pageSize = currentSize;
       this.paginationOptions.currentPage = 1;
-      this.queryList ? this.queryList() : this.$parent.queryList()
+      this.queryList ? this.queryList() : this.$parent.queryList();
     },
     // 搜索专用
     handleSearchChange(currentPage = 1, pageSize = 10) {
       this.paginationOptions.pageSize = pageSize;
       this.paginationOptions.currentPage = currentPage;
       this.queryList ? this.queryList() : this.$parent.queryList();
-    }
-  }
+    },
+  },
 };
 
-export default table
+export default table;

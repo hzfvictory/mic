@@ -1,11 +1,10 @@
-import Home from "@/pages/home"
-import List from "@/pages/list"
-import Detail from "@/pages/detail"
-import Login from "@/pages/login"
+import Home from '@/pages/home';
+import List from '@/pages/list';
+import Detail from '@/pages/detail';
+import Login from '@/pages/login';
 
 export default {
   routes: [
-
     {
       path: '/',
       component: Home,
@@ -30,5 +29,5 @@ export default {
       exact: true,
       title: '登录页',
     },
-  ]
-}
+  ],
+};

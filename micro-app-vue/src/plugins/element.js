@@ -76,7 +76,7 @@ import {
   Loading,
   MessageBox,
   Message,
-  Notification
+  Notification,
 } from 'element-ui';
 
 Vue.use(Pagination);
@@ -162,5 +162,4 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
-Vue.prototype.$ELEMENT = {size: 'small', zIndex: 1000};
-
+Vue.prototype.$ELEMENT = { size: 'small', zIndex: 1000 };

@@ -1,18 +1,18 @@
-import {Notification} from 'element-ui';
+import { Notification } from 'element-ui';
 
 /*进度条插件*/
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 import {
   registerMicroApps,
   addGlobalUncaughtErrorHandler,
   start,
-  removeGlobalUncaughtErrorHandler
-} from "qiankun";
+  removeGlobalUncaughtErrorHandler,
+} from 'qiankun';
 
 /*子应用注册信息*/
-import apps from "./apps";
+import apps from './apps';
 
 /**
  * registerMicroApps
@@ -48,21 +48,21 @@ registerMicroApps(apps, {
  */
 addGlobalUncaughtErrorHandler((event) => {
   console.error(event);
-  const {message: msg} = event;
+  const { message: msg } = event;
   /*加载失败时提示*/
-  if (msg && msg.includes("died in status LOADING_SOURCE_CODE")) {
+  if (msg && msg.includes('died in status LOADING_SOURCE_CODE')) {
     Notification({
       title: '加载失败',
       message: '子应用加载失败，请检查应用是否可运行',
-      type: 'error'
+      type: 'error',
     });
   }
 });
 
 removeGlobalUncaughtErrorHandler((err) => {
   console.error('移除未捕获的错误', err);
-  return false
-})
+  return false;
+});
 
 /*导出 qiankun 的启动函数*/
 export default start;

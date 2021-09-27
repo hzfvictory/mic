@@ -1,25 +1,25 @@
 <template>
-    <div>
-        {{data}}
-    </div>
+  <div>
+    {{ data }}
+  </div>
 </template>
 
 <script>
   export default {
-    name: "",
+    name: '',
     data() {
       return {
         data: [],
-      }
+      };
     },
     created() {
-      this.result()
+      this.result();
     },
 
     methods: {
       result() {
-
-        let k = 3, n = 10;
+        let k = 3,
+          n = 10;
 
         let ans;
         let combinationSum3 = function (k, n) {
@@ -35,22 +35,20 @@
          */
         function back(k, n, nowArr, sum, start) {
           if (sum === n && nowArr.length === k) {
-            return ans.push(nowArr)
+            return ans.push(nowArr);
           }
 
           for (let i = start; i <= 9; i++) {
             if (sum + i > n || nowArr.length > k) break;
 
-            back(k, n, [...nowArr, i], sum + i, i + 1)
+            back(k, n, [...nowArr, i], sum + i, i + 1);
           }
         }
 
-        this.data = combinationSum3(k, n)
+        this.data = combinationSum3(k, n);
       },
-    }
-  }
+    },
+  };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

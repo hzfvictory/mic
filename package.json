@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "examples:install": "npm-run-all --serial install:*",
-    "examples:start": "npm-run-all --parallel start:*",
-    "examples:build": "npm-run-all --parallel build:*",
-    "examples:upload": "npm-run-all --parallel upload:*",
+    "install:all": "npm-run-all --serial install:*",
+    "start": "npm-run-all --parallel start:*",
+    "build": "npm-run-all --parallel build:*",
+    "upload": "npm-run-all --parallel upload:*",
     "install:main": "cd micro-app-vue-main && yarn",
     "start:main": "cd micro-app-vue-main && yarn start",
     "build:main": "cd micro-app-vue-main && yarn build",
@@ -33,10 +33,13 @@
     "url": ""
   },
   "homepage": "",
-  "devDependencies": {
-    "npm-run-all": "^4.1.5"
-  },
   "dependencies": {
-    "qiankun": "2.0.25"
+    "qiankun": "2.5.0"
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security",
+    "glob": "^7.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1"
   }
 }

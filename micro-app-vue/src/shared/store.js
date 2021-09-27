@@ -1,14 +1,14 @@
 /*基于REUDX通信方案*/
 const emptyAction = () => {
-  console.warn("当前执行的redux不存在!");
-}
+  console.warn('当前执行的redux不存在!');
+};
 
 class Store {
   actions = {
     dispatch: emptyAction,
     getState: emptyAction,
     replaceReducer: emptyAction,
-    subscribe: emptyAction
+    subscribe: emptyAction,
   };
 
   setStore(actions) {
@@ -20,7 +20,7 @@ class Store {
   }
 
   getState() {
-    return this.actions.getState() ;
+    return this.actions.getState();
   }
 
   replaceReducer(...args) {

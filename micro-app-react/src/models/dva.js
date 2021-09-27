@@ -1,7 +1,7 @@
-import {create} from 'dva-core';
+import { create } from 'dva-core';
 // import { createLogger } from 'redux-logger';
 import createLoading from 'dva-loading';
-import models from "./index";
+import models from './index';
 
 let app;
 let store;
@@ -13,7 +13,7 @@ function createApp(opt) {
   app = create(opt);
   app.use(createLoading({}));
 
-  opt.models.forEach(model => app.model(model));
+  opt.models.forEach((model) => app.model(model));
   app.start();
 
   store = app._store;
@@ -26,11 +26,10 @@ function createApp(opt) {
   return app;
 }
 
-
 const dvaApp = createApp({
   initialState: {},
   models: models,
 });
 const stores = dvaApp.getStore();
 
-export default stores
+export default stores;

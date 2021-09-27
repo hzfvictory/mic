@@ -1,29 +1,32 @@
-import table from "../../../mixins/table"
+import table from '../../../mixins/table';
 
 export default {
   mixins: [table],
   props: {
-    otherTableParams: { // 设置table其他参数
+    otherTableParams: {
+      // 设置table其他参数
       type: Object,
-      default () {
-        return {}
-      }
+      default() {
+        return {};
+      },
     },
-    otherPaginationParams: { // 设置分页其他参数
+    otherPaginationParams: {
+      // 设置分页其他参数
       type: Object,
       default: function () {
-        return {}
-      }
+        return {};
+      },
     },
-    tableColumn: { // table的column
+    tableColumn: {
+      // table的column
       type: Array,
       default: function () {
-        return []
-      }
+        return [];
+      },
     },
     multiple: {
       type: Boolean,
-      default: false
+      default: false,
     },
   },
   methods: {
@@ -31,7 +34,8 @@ export default {
       // 处理操作部分按钮 -> 可以在外面自定义，必须是jsx
       if (item.handleButtons) return item.handleButtons(record);
       return (
-        !!item.list.length && item.list.map((item) => {
+        !!item.list.length &&
+        item.list.map((item) => {
           return (
             <el-button
               disabled={item.disabled}
@@ -43,7 +47,7 @@ export default {
             >
               {item.title}
             </el-button>
-          )
+          );
         })
       );
     },
@@ -51,11 +55,17 @@ export default {
     //   this.$emit('currentChange', val);
     // },
   },
-  mounted() {
-  },
+  mounted() {},
   render() {
-    const {tableOptions, paginationOptions, paginationOptionsMethod,
-      tableOptionsMethod, otherTableParams, tableColumn, multiple} = this;
+    const {
+      tableOptions,
+      paginationOptions,
+      paginationOptionsMethod,
+      tableOptionsMethod,
+      otherTableParams,
+      tableColumn,
+      multiple,
+    } = this;
     return (
       <div>
         <el-table
@@ -66,62 +76,51 @@ export default {
             },
             on: {
               ...tableOptionsMethod,
-              ...otherTableParams.on
-            }
+              ...otherTableParams.on,
+            },
           }}
         >
           {/* table多选 */}
-          {
-            multiple && (
-              <el-table-column
-                type="selection"
-                width="55"
-                fixed={'left'}
-              />
-            )
-          }
+          {multiple && <el-table-column type="selection" width="55" fixed={'left'} />}
           {/* table列表 */}
-          {
-            tableColumn.map((item) => {
-
-              if (item.type === 'button') {
-                // 操作部分
-                return (
-                  <el-table-column
-                    label={item.label || '操作'}
-                    width={item.width || '88'}
-                    fixed={item.fixed || 'right'}
-                    {...{
-                      scopedSlots: {
-                        default: ({row}) => {
-                          return this.handleButtons(item, row)
-                        }
-                      }
-                    }}
-                  />
-                )
-              }
+          {tableColumn.map((item) => {
+            if (item.type === 'button') {
+              // 操作部分
               return (
                 <el-table-column
-                  props={item}
-                  key={item.prop}
+                  label={item.label || '操作'}
+                  width={item.width || '88'}
+                  fixed={item.fixed || 'right'}
                   {...{
-                    // 自定义的渲染方式，拓展性
                     scopedSlots: {
-                      default: ({row}) => {
-                        return item.render ? item.render(row[item.prop], row) : row[item.prop]
-                      }
-                    }
+                      default: ({ row }) => {
+                        return this.handleButtons(item, row);
+                      },
+                    },
                   }}
                 />
-              )
-            })
-          }
+              );
+            }
+            return (
+              <el-table-column
+                props={item}
+                key={item.prop}
+                {...{
+                  // 自定义的渲染方式，拓展性
+                  scopedSlots: {
+                    default: ({ row }) => {
+                      return item.render ? item.render(row[item.prop], row) : row[item.prop];
+                    },
+                  },
+                }}
+              />
+            );
+          })}
         </el-table>
         {/*分页*/}
         <el-pagination
           {...{
-            class: paginationOptions.class,  // 支持拓展
+            class: paginationOptions.class, // 支持拓展
             props: {
               ...paginationOptions,
             },
@@ -132,5 +131,5 @@ export default {
         />
       </div>
     );
-  }
+  },
 };

@@ -1,31 +1,30 @@
 <template>
-    <div>
-        <input type="text" @input="inputHandler( 'hello' ,$event)"/>
-        <div v-for="(item,index) of ary" :key="index" @click="jumpList">
-            {{item}}
-        </div>
+  <div>
+    <input type="text" @input="inputHandler('hello', $event)" />
+    <div v-for="(item, index) of ary" :key="index" @click="jumpList">
+      {{ item }}
     </div>
+  </div>
 </template>
 
 <script>
   export default {
-    name: "",
+    name: '',
     data() {
       return {
         ary: [...new Array(150).keys()],
-        name: {a: 1}
-      }
+        name: { a: 1 },
+      };
     },
     methods: {
       jumpList() {
-        this.$router.push("/table-list")
+        this.$router.push('/table-list');
       },
       inputHandler(msg, e) {
-        console.log(e.target.value)
-      }
+        console.log(e.target.value);
+      },
     },
-    created() {
-    },
+    created() {},
     mounted() {
       // this.timer = setInterval(() => {
       //   console.log(Date.now())
@@ -37,15 +36,13 @@
     },
     beforeRouteLeave(to, from, next) {
       if (to.name === 'table-list') {
-        this.$store.commit('change', ['tableLists'])
+        this.$store.commit('change', ['tableLists']);
       } else {
         this.$store.commit('change', []);
       }
-      next()
-    }
-  }
+      next();
+    },
+  };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

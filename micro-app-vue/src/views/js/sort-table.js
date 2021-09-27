@@ -1,5 +1,5 @@
 import Sortable from 'sortablejs';
-import table from "@/mixins/table"
+import table from '@/mixins/table';
 
 export default {
   name: 'TableList',
@@ -9,70 +9,70 @@ export default {
     return {
       column: [
         {
-          prop: "roleId",
-          label: "序号",
+          prop: 'roleId',
+          label: '序号',
           width: 100,
         },
         {
           prop: 'roleName',
-          label: "角色名称",
-          'width': "110"
+          label: '角色名称',
+          width: '110',
         },
         {
-          prop: "createTime",
-          label: "创建时间",
+          prop: 'createTime',
+          label: '创建时间',
         },
         {
-          prop: "roleId",
-          label: "序号",
+          prop: 'roleId',
+          label: '序号',
           width: 100,
         },
         {
           prop: 'roleName',
-          label: "角色名称",
-          'width': "110"
+          label: '角色名称',
+          width: '110',
         },
         {
-          prop: "createTime",
-          label: "创建时间",
+          prop: 'createTime',
+          label: '创建时间',
         },
         {
-          prop: "roleId",
-          label: "序号",
+          prop: 'roleId',
+          label: '序号',
           width: 100,
         },
         {
           prop: 'roleName',
-          label: "角色名称",
-          'width': "110"
+          label: '角色名称',
+          width: '110',
         },
         {
-          prop: "createTime",
-          label: "创建时间",
+          prop: 'createTime',
+          label: '创建时间',
         },
         {
           prop: 'roleName',
-          label: "编辑",
-          width: "180",
-          fixed: 'right'
+          label: '编辑',
+          width: '180',
+          fixed: 'right',
         },
       ],
       fullscreenLoading: true,
       paginationOptions: {
         pageSizes: [11, 21, 31, 40],
       },
-    }
+    };
   },
   watch: {
     'tableOptions.data': {
       deep: true,
       handler: function () {
         // console.log(newData);
-      }
-    }
+      },
+    },
   },
   created() {
-    this.queryList()
+    this.queryList();
   },
   methods: {
     //行拖拽
@@ -84,28 +84,35 @@ export default {
         animation: 150,
         onChoose() {
           //选择元素
-          _this.column[_this.column.length - 1].fixed = false
+          _this.column[_this.column.length - 1].fixed = false;
         },
         onUnchoose: function () {
           // 取消选择元素
-          _this.column[_this.column.length - 1].fixed = 'right'
-
+          _this.column[_this.column.length - 1].fixed = 'right';
         },
-        onEnd({newIndex, oldIndex}) {
-          const currRow = _this.tableOptions.data.splice(oldIndex, 1)[0]
-          _this.tableOptions.data.splice(newIndex, 0, currRow)
-        }
-      })
+        onEnd({ newIndex, oldIndex }) {
+          const currRow = _this.tableOptions.data.splice(oldIndex, 1)[0];
+          _this.tableOptions.data.splice(newIndex, 0, currRow);
+        },
+      });
     },
     async queryList() {
       this.fullscreenLoading = true;
-      const {data: {items, page: {totalRecord}}} = await this.$fetch(`http://123.57.68.113:8064/role?pageSize=${this.paginationOptions.pageSize}&pageNum=${this.paginationOptions.currentPage}`, {
-        headers: {
-          Authentication: this.$store.getters.token
+      const {
+        data: {
+          items,
+          page: { totalRecord },
         },
-      });
+      } = await this.$fetch(
+        `http://123.57.68.113:8064/role?pageSize=${this.paginationOptions.pageSize}&pageNum=${this.paginationOptions.currentPage}`,
+        {
+          headers: {
+            Authentication: this.$store.getters.token,
+          },
+        }
+      );
       this.handlePageData(items, totalRecord);
       this.fullscreenLoading = false;
-    }
+    },
   },
-}
+};

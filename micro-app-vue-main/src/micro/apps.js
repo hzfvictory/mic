@@ -1,19 +1,18 @@
-import store from "@/shared/store";
+import store from '@/shared/store';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 const isEnter = isProduction ? '120.79.229.197' : 'localhost';
 
 const genActiveRule = (routerPrefix) => {
-  return location => location.pathname.startsWith(routerPrefix);
-}
+  return (location) => location.pathname.startsWith(routerPrefix);
+};
 
 const isVueApp = (routerPrefix) => {
   return (location) => {
-    return location.pathname.includes(routerPrefix) || location.pathname.includes('/menu/react')
-  }
-}
-
+    return location.pathname.includes(routerPrefix) || location.pathname.includes('/menu/react');
+  };
+};
 
 const apps = [
   /**
@@ -25,18 +24,18 @@ const apps = [
    * props 向子组件传递信息
    */
   {
-    name: "reactMicroApp",
+    name: 'reactMicroApp',
     entry: `//${isEnter}:10100`,
-    container: "#wrapper",
-    activeRule: genActiveRule("/menu/react"),
-    props: {store, basePath: '/menu/react'},
+    container: '#wrapper',
+    activeRule: genActiveRule('/menu/react'),
+    props: { store, basePath: '/menu/react' },
   },
   {
-    name: "vueMicroApp",
+    name: 'vueMicroApp',
     entry: `//${isEnter}:10200`,
-    container: "#wrapper-vue",
-    activeRule: genActiveRule("/menu/vue"),
-    props: {store, basePath: '/menu/vue'},
+    container: '#wrapper-vue',
+    activeRule: genActiveRule('/menu/vue'),
+    props: { store, basePath: '/menu/vue' },
   },
   // {
   //   name: "angularMicroApp",
@@ -45,10 +44,10 @@ const apps = [
   //   activeRule: "/angular"
   // },
   {
-    name: "staticMicroApp",
+    name: 'staticMicroApp',
     entry: `//${isEnter}:10400`,
-    container: "#wrapper",
-    activeRule: genActiveRule("/static")
+    container: '#wrapper',
+    activeRule: genActiveRule('/static'),
   },
 ];
 

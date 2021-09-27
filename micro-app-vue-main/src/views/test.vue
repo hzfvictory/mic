@@ -1,67 +1,52 @@
 <template comments>
+  <div>
+    <h3 @click="queryToken" class="el-token">
+      获临时token取
+      <!--有注释的功能-->
+    </h3>
+
     <div>
-        <h3 @click="queryToken" class="el-token">获临时token取<!--有注释的功能--></h3>
-
-        <div>
-            <el-input style="width: 200px;margin-right: 20px" v-model="token" placeholder="添加token"></el-input>
-            <el-button type="primary" @click="addToken">添加</el-button>
-        </div>
-
-        <el-card class="anoCard"
-                 v-loading="fullscreenLoading"
-        >
-            <el-table
-                    :data="tableOptions.data"
-                    stripe
-                    border
-                    size="small"
-            >
-                <el-table-column
-                        prop="roleId"
-                        label="序号"
-                        width="100">
-                </el-table-column>
-                <el-table-column
-                        prop="roleName"
-                        label="角色名称"
-                        width="110">
-                </el-table-column>
-                <el-table-column
-                        prop="createTime"
-                        label="创建时间">
-                    <template slot-scope="scope">
-                        {{scope | timeFormat}}
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop="edit"
-                        label="操作"
-                        fixed="right"
-                        width="180">
-                </el-table-column>
-            </el-table>
-
-            <el-pagination
-                    class="fyDiv"
-                    background
-                    :hide-on-single-page="paginationOptions.showPage"
-                    :layout="paginationOptions.layout"
-                    :page-sizes="paginationOptions.pageSizes"
-                    :total="paginationOptions.total"
-                    :page-size="paginationOptions.pageSize"
-                    :current-page="paginationOptions.currentPage"
-                    @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange"
-            />
-
-            <div @click="resetTable">重置table</div>
-        </el-card>
+      <el-input
+        style="width: 200px; margin-right: 20px"
+        v-model="token"
+        placeholder="添加token"
+      ></el-input>
+      <el-button type="primary" @click="addToken">添加</el-button>
     </div>
+
+    <el-card class="anoCard" v-loading="fullscreenLoading">
+      <el-table :data="tableOptions.data" stripe border size="small">
+        <el-table-column prop="roleId" label="序号" width="100"></el-table-column>
+        <el-table-column prop="roleName" label="角色名称" width="110"></el-table-column>
+        <el-table-column prop="createTime" label="创建时间">
+          <template slot-scope="scope">
+            {{ scope | timeFormat }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="edit" label="操作" fixed="right" width="180"></el-table-column>
+      </el-table>
+
+      <el-pagination
+        class="fyDiv"
+        background
+        :hide-on-single-page="paginationOptions.showPage"
+        :layout="paginationOptions.layout"
+        :page-sizes="paginationOptions.pageSizes"
+        :total="paginationOptions.total"
+        :page-size="paginationOptions.pageSize"
+        :current-page="paginationOptions.currentPage"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+
+      <div @click="resetTable">重置table</div>
+    </el-card>
+  </div>
 </template>
 <script>
-  import moment from "moment"
-  import React from "react"
-  import table from "../mixins/table"
+  import moment from 'moment';
+  import React from 'react';
+  import table from '../mixins/table';
 
   export default {
     name: 'TableList',
@@ -75,20 +60,20 @@
         paginationOptions: {
           pageSizes: [11, 21, 31, 40],
         },
-      }
+      };
     },
     filters: {
       timeFormat(scope) {
-        return moment(scope.row.createTime).format('YYY-MM-DD HH:mm:ss')
+        return moment(scope.row.createTime).format('YYY-MM-DD HH:mm:ss');
       },
     },
     watch: {},
     computed: {},
     created() {
-      this.queryList()
+      this.queryList();
     },
     mounted() {
-      console.log(this)
+      console.log(this);
 
       // console.log(ReactDom.render(React.createElement("div", null, "Hello hzf", /*#__PURE__*/React.createElement("span", null, "12123")),app));
       // console.log(React.createElement("div", null, "Hello hzf", /*#__PURE__*/React.createElement("span", null, "12123")));
@@ -105,11 +90,19 @@
     methods: {
       async queryList() {
         this.fullscreenLoading = true;
-        const {data: {items, page: {totalRecord}}} = await this.$fetch(`http://123.57.68.113:8064/role?pageSize=${this.paginationOptions.pageSize}&pageNum=${this.paginationOptions.currentPage}`, {
-          headers: {
-            Authentication: this.$store.getters.token
+        const {
+          data: {
+            items,
+            page: { totalRecord },
           },
-        });
+        } = await this.$fetch(
+          `http://123.57.68.113:8064/role?pageSize=${this.paginationOptions.pageSize}&pageNum=${this.paginationOptions.currentPage}`,
+          {
+            headers: {
+              Authentication: this.$store.getters.token,
+            },
+          }
+        );
         this.handlePageData(items, totalRecord);
         this.fullscreenLoading = false;
       },
@@ -121,17 +114,17 @@
         if (!localStorage.getItem('token')) {
           localStorage.setItem('token', '');
         }
-        window.open('http://123.57.68.113:8063/order/list')
+        window.open('http://123.57.68.113:8063/order/list');
       },
       addToken() {
         localStorage.setItem('token', this.token);
-      }
+      },
     },
-  }
+  };
 </script>
 
 <style type="text/scss" lang="scss" scoped>
-    .el-token {
-        color: #5daf34;
-    }
+  .el-token {
+    color: #5daf34;
+  }
 </style>

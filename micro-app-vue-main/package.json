@@ -16,7 +16,6 @@
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
-    "qiankun": "^2.0.25",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "redux": "^4.0.5",

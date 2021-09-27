@@ -301,15 +301,15 @@ pify@^3.0.0:
   resolved "https://registry.npmjs.org/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
-qiankun@2.0.25:
-  version "2.0.25"
-  resolved "https://registry.npm.taobao.org/qiankun/download/qiankun-2.0.25.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqiankun%2Fdownload%2Fqiankun-2.0.25.tgz#c1807ea03dd2ff420a7182469cb8458cae15e80c"
-  integrity sha1-wYB+oD3S/0IKcYJGnLhFjK4V6Aw=
+qiankun@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.npmjs.org/qiankun/-/qiankun-2.5.0.tgz#2acb15448d589822278fce8571e79fb9c12e755d"
+  integrity sha512-/M0ycqudcdF14egpx35e7xACWEio5IO85g0L6uNOORTQWm3rI3kGx4vAikgEaNxiElRTplnzfYAt/WAJsPqJqg==
   dependencies:
     "@babel/runtime" "^7.10.5"
     import-html-entry "^1.9.0"
     lodash "^4.17.11"
-    single-spa "^5.3.1"
+    single-spa "^5.9.2"
     tslib "^1.10.0"
 
 read-pkg@^3.0.0:
@@ -355,10 +355,10 @@ shell-quote@^1.6.1:
   resolved "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
 
-single-spa@^5.3.1:
-  version "5.5.5"
-  resolved "https://registry.npmjs.org/single-spa/-/single-spa-5.5.5.tgz#77a947516874d50b1e1a43aa6c316b550605d4fb"
-  integrity sha512-10YHGwETkAT6k9dkOTClig2h/R6yA5qvLdvk6i7Z4/PK8A2iD/pVvYKIud0aZVA69OzO1lrQOHB4VgT4t8/kXw==
+single-spa@^5.9.2:
+  version "5.9.3"
+  resolved "https://registry.npmjs.org/single-spa/-/single-spa-5.9.3.tgz#2d151cbb3b273629a5b27b30a3b8ca847dcba4c5"
+  integrity sha512-qMGraRzIBsodV6569Fob4cQ4/yQNrcZ5Achh3SAQDljmqUtjAZ7BAA7GAyO/l5eizb7GtTmVq9Di7ORyKw82CQ==
 
 spdx-correct@^3.0.0:
   version "3.1.1"

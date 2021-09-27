@@ -65,10 +65,10 @@ export default {
       /*TODO: 手动加载微应用    新建一个全新的，不然冲突*/
       this.microApp = loadMicroApp(
         {
-          name: 'reactMicroApp',
-          entry: '//localhost:10100',
+          name: 'vueMicroApp',
+          entry: '//localhost:10200',
           container: '#reactLoadMicroApp',
-          props: {dddd: '子应用', store, basePath: '/menu/vue/table-detail'}
+          props: {dddd: '子应用', store, basePath: '/menu/react'}
         }
       );
     },

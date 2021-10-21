@@ -34,7 +34,7 @@ const Index = (props) => {
   }, []);
   const queryData = ({ detail: { handelData, jumpUrl } }) => {
     console.log(handelData({ msg: msgRef.current }), '原生通信');
-    // jumpUrl('/menu/vue/list')
+    // jumpUrl('/mic/vue/list')
   };
   const dispatchData = (msg) => () => {
     msgRef.current = msg;
@@ -45,7 +45,7 @@ const Index = (props) => {
     console.log(store.getState(), 'redux数据');
   };
   const jumpUrl = () => {
-    store.getState().jumpUrl('/menu/vue/table-detail');
+    store.getState().jumpUrl('/mic/vue/table-detail');
   };
   return (
     <Fragment>

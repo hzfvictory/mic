@@ -10,7 +10,7 @@ const genActiveRule = (routerPrefix) => {
 
 const isVueApp = (routerPrefix) => {
   return (location) => {
-    return location.pathname.includes(routerPrefix) || location.pathname.includes('/menu/react');
+    return location.pathname.includes(routerPrefix) || location.pathname.includes('/mic/react');
   };
 };
 
@@ -27,15 +27,15 @@ const apps = [
     name: 'reactMicroApp',
     entry: `//${isEnter}:10100`,
     container: '#wrapper',
-    activeRule: genActiveRule('/menu/react'),
-    props: { store, basePath: '/menu/react' },
+    activeRule: genActiveRule('/mic/react'),
+    props: {store, basePath: '/mic/react'},
   },
   {
     name: 'vueMicroApp',
     entry: `//${isEnter}:10200`,
     container: '#wrapper-vue',
-    activeRule: genActiveRule('/menu/vue'),
-    props: { store, basePath: '/menu/vue' },
+    activeRule: genActiveRule('/mic/vue'),
+    props: {store, basePath: '/mic/vue'},
   },
   // {
   //   name: "angularMicroApp",
@@ -47,7 +47,7 @@ const apps = [
     name: 'staticMicroApp',
     entry: `//${isEnter}:10400`,
     container: '#wrapper',
-    activeRule: genActiveRule('/static'),
+    activeRule: ['/static', '/drag'],
   },
 ];
 

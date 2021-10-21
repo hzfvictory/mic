@@ -36,11 +36,10 @@ let router = null;
  * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
  */
 function render(props) {
-  const { container } = props || {};
+  const {container} = props || {};
   if (props) {
     // 注入 actions 实例
     actions.setActions(props);
-    reduxStore.setStore(props.store);
     if (props.store) {
       // 注入redux 实例
       reduxStore.setStore(props.store);
@@ -70,7 +69,7 @@ function render(props) {
 }
 
 function createEvent(params, eventName = 'emit') {
-  return new CustomEvent(eventName, { detail: params });
+  return new CustomEvent(eventName, {detail: params});
 }
 
 // 独立运行时，直接挂载应用

@@ -1,6 +1,6 @@
 import store from '@/shared/store';
 import actions from '@/shared/actions';
-import { loadMicroApp } from 'qiankun';
+import {loadMicroApp} from 'qiankun';
 
 export default {
   name: '',
@@ -8,11 +8,12 @@ export default {
     return {
       microApp: '',
       ary: [...new Array(150).keys()],
-      name: { a: 1 },
+      name: {a: 1},
       val: localStorage.getItem('input'),
     };
   },
-  created() {},
+  created() {
+  },
   mounted() {
     // 加载子应用
     // this.setMicApp();
@@ -43,9 +44,12 @@ export default {
     }
     next();
   },
+  beforeDestroy() {
+    this.microApp?.unmount();
+  },
   methods: {
-    queryData({ detail: { handelData } }) {
-      console.log(handelData({ data: [1, 2, 3, 4], kkk: 121 }));
+    queryData({detail: {handelData}}) {
+      console.log(handelData({data: [1, 2, 3, 4], kkk: 121}));
     },
     dispatchData() {
       // document.dispatchEvent(window.evt);
@@ -56,7 +60,7 @@ export default {
       console.log(
         store.dispatch({
           type: 'SET_DETAIL',
-          payload: { data: [1, 2, 3, 4], kkk: 121 },
+          payload: {data: [1, 2, 3, 4], kkk: 121},
         })
       );
     },
@@ -66,11 +70,11 @@ export default {
         name: 'reactMicroApp',
         entry: '//localhost:10100',
         container: '#reactLoadMicroApp',
-        props: { dddd: '子应用', store, basePath: '/menu/vue/table-detail' },
+        props: {dddd: '子应用', store, basePath: '/mic/vue/table-detail'},
       });
     },
     jumpUrl() {
-      store.getState().jumpUrl('/menu/react/detail/1176407714125975552');
+      store.getState().jumpUrl('/mic/react/detail/1176407714125975552');
     },
     jumpList() {
       this.$router.push('/list');

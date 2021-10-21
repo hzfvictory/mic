@@ -45,7 +45,13 @@ window._store = store;
  * fetch     自定义的fetch方法
  * */
 
-startQiankun({ singular: true, prefetch: true, sandbox: true });
+startQiankun({
+  singular: true,
+  prefetch: true,
+  sandbox: {
+    experimentalStyleIsolation: false,
+  }
+});
 
 new Vue({
   router,

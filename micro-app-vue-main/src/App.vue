@@ -120,13 +120,13 @@
       title: 'react微应用',
       key: '7',
       icon: 'el-icon-s-opportunity',
-      path: '/menu/react/list',
+      path: '/mic/react/list',
     },
     {
       title: 'vue微应用',
       key: '8',
       icon: 'el-icon-video-camera-solid',
-      path: '/menu/vue/list',
+      path: '/mic/vue/list',
     },
     {
       title: 'static微应用',
@@ -162,7 +162,7 @@
         if (state.scen_id) {
           console.log(
             '跳转到详情页',
-            this.$router.history.push(`/menu/react/detail/${state.scen_id}`)
+            this.$router.history.push(`/mic/react/detail/${state.scen_id}`)
           );
         }
       });

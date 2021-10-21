@@ -1,97 +1,102 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- 引入 bootstrap -->
-    <link
-      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- 引入 bootstrap -->
+  <link
+    href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 
-    <title>static 微应用</title>
-    <style>
-      .experimentalStyleIsolation {
-        color: #3a8ee6;
-        font-size: 16px;
-      }
-      .table {
-        font-size: 14px;
-        table-layout: fixed;
-      }
-
-      .table thead th {
-        background: #fafafa;
-        border-bottom: 1px solid #f0f0f0;
-      }
-
-      .table td,
-      .table th {
-        border-top: 1px solid #f0f0f0;
-      }
-    </style>
-  </head>
-
-  <body>
-    <h2 class="experimentalStyleIsolation">查看样式沙箱</h2>
-    <section id="jquery-app-container" style="padding: 20px; color: blue" />
-  </body>
-  <!-- 引入 jquery -->
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <script>
-    const emptyAction = () => {
-      console.warn('当前执行的actions为空!');
-    };
-
-    class Actions {
-      // 默认值为空 Action
-      actions = {
-        onGlobalStateChange: emptyAction,
-        setGlobalState: emptyAction,
-      };
-
-      /**
-       * 设置 actions
-       */
-      setActions(actions) {
-        this.actions = actions;
-      }
-
-      /**
-       * 映射
-       */
-      onGlobalStateChange(...args) {
-        return this.actions.onGlobalStateChange(...args);
-      }
-
-      /**
-       * 映射
-       */
-      setGlobalState(...args) {
-        return this.actions.setGlobalState(...args);
-      }
+  <title>static 微应用</title>
+  <style>
+    .experimentalStyleIsolation {
+      color: #3a8ee6;
+      font-size: 16px;
     }
 
-    const actions = new Actions();
+    .table {
+      font-size: 14px;
+      table-layout: fixed;
+    }
 
-    const fetchVegetable = (cur, limit) => {
-      return fetch(
-        `https://api.justcome.cn/admin/1068068178288054272/scenics?offset=${cur}&limit=${limit}&includeShop=true`,
-        {
-          method: 'get',
-        }
-      ).then((res) => res.json());
+    .table thead th {
+      background: #fafafa;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .table td,
+    .table th {
+      border-top: 1px solid #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+<h2 class="experimentalStyleIsolation">查看样式沙箱</h2>
+
+<a href="javascript:void(0);" onclick="(()=>   history.pushState({}, {}, './drag') )()">跳转</a>
+
+
+<section id="jquery-app-container" style="padding: 20px; color: blue" />
+</body>
+<!-- 引入 jquery -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  const emptyAction = () => {
+    console.warn('当前执行的actions为空!');
+  };
+
+  class Actions {
+    // 默认值为空 Action
+    actions = {
+      onGlobalStateChange: emptyAction,
+      setGlobalState: emptyAction,
     };
 
     /**
-     * 请求接口数据，构建 HTML
+     * 设置 actions
      */
-    async function buildHTML() {
-      const result = await fetchVegetable(1, 10);
-      const list = result.data;
-      const html = `<table class="table">
+    setActions(actions) {
+      this.actions = actions;
+    }
+
+    /**
+     * 映射
+     */
+    onGlobalStateChange(...args) {
+      return this.actions.onGlobalStateChange(...args);
+    }
+
+    /**
+     * 映射
+     */
+    setGlobalState(...args) {
+      return this.actions.setGlobalState(...args);
+    }
+  }
+
+  const actions = new Actions();
+
+  const fetchVegetable = (cur, limit) => {
+    return fetch(
+      `https://api.justcome.cn/admin/1068068178288054272/scenics?offset=${cur}&limit=${limit}&includeShop=true`,
+      {
+        method: 'get',
+      }
+    ).then((res) => res.json());
+  };
+
+  /**
+   * 请求接口数据，构建 HTML
+   */
+  async function buildHTML() {
+    const result = await fetchVegetable(1, 10);
+    const list = result.data;
+    const html = `<table class="table">
           <thead>
             <tr>
               <th width="180px" scope="col">id</th>
@@ -104,73 +109,74 @@
           </thead>
           <tbody>
             ${list
-              .map(
-                (item) => `
+      .map(
+        (item) => `
                     <tr>
                       <td>${item.id}</td>
-                      <td> <a href="/menu/react/detail/${item.id}" >${item.name}</a></td>
+                      <td> <a href="/mic/react/detail/${item.id}" >${item.name}</a></td>
                       <td>
                         <img style="width: 40px; height: 40px; border-radius: 100%;" src="${item.cover}"></img>
                       </td>
                       <td>${item.created_date}</td>
                       <td>${item.status}</td>
-                     <td><a href="javascript:void(0);" onclick="(()=>  window.actions.setGlobalState({scen_id: '${item.id}'}) )()">编辑</a></td>
+                      <!-- <td><a href="javascript:void(0);" onclick="(()=>  window.actions.setGlobalState({scen_id: '${item.id}'}) )()">编辑</a></td>-->
+                     <td><a href="javascript:void(0);" onclick="(()=>   history.pushState({}, {}, '/mic/react/detail/${item.id}') )()">编辑</a></td>
                     </tr>
                       `
-              )
-              .join('')}
+        )
+      .join('')}
           </tbody>
       </table>`;
-      return html;
+    return html;
+  }
+
+  /**
+   * 渲染函数
+   * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
+   */
+  const render = async ($, props) => {
+    if (props) {
+      // 注入 actions 实例
+      actions.setActions(props);
     }
 
+    const html = await buildHTML();
+    $('#jquery-app-container').html(html);
+    return Promise.resolve();
+  };
+
+  // 独立运行时，直接挂载应用
+  if (!window.__POWERED_BY_QIANKUN__) {
+    render($);
+  }
+
+  ((global) => {
     /**
-     * 渲染函数
-     * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
+     * 注册微应用生命周期钩子函数
+     * global[appName] 中的 appName 与主应用中注册的微应用名称一致
      */
-    const render = async ($, props) => {
-      if (props) {
-        // 注入 actions 实例
-        actions.setActions(props);
-      }
-
-      const html = await buildHTML();
-      $('#jquery-app-container').html(html);
-      return Promise.resolve();
-    };
-
-    // 独立运行时，直接挂载应用
-    if (!window.__POWERED_BY_QIANKUN__) {
-      render($);
-    }
-
-    ((global) => {
+    global['staticMicroApp'] = {
       /**
-       * 注册微应用生命周期钩子函数
-       * global[appName] 中的 appName 与主应用中注册的微应用名称一致
+       * bootstrap 只会在微应用初始化的时候调用一次，下次微应用重新进入时会直接调用 mount 钩子，不会再重复触发 bootstrap。
+       * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
        */
-      global['staticMicroApp'] = {
-        /**
-         * bootstrap 只会在微应用初始化的时候调用一次，下次微应用重新进入时会直接调用 mount 钩子，不会再重复触发 bootstrap。
-         * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
-         */
-        bootstrap: () => {
-          return Promise.resolve();
-        },
-        /**
-         * 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
-         */
-        mount: (props) => {
-          window.actions = actions;
-          return render($, props);
-        },
-        /**
-         * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例
-         */
-        unmount: () => {
-          return Promise.resolve();
-        },
-      };
-    })(window);
-  </script>
+      bootstrap: () => {
+        return Promise.resolve();
+      },
+      /**
+       * 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
+       */
+      mount: (props) => {
+        window.actions = actions;
+        return render($, props);
+      },
+      /**
+       * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例
+       */
+      unmount: () => {
+        return Promise.resolve();
+      },
+    };
+  })(window);
+</script>
 </html>

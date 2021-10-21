@@ -20,7 +20,7 @@ import TestTable from '../views/test.vue';
 Vue.use(VueRouter);
 
 export const routes = [
-  { path: '/', redirect: '/wel' },
+  {path: '/', redirect: '/wel'},
   {
     path: '/home',
     name: 'Home',
@@ -30,7 +30,7 @@ export const routes = [
     path: '/wel',
     name: 'About',
     component: About,
-    meta: { keepAlive: true },
+    meta: {keepAlive: true},
   },
   {
     path: '/menu',
@@ -46,7 +46,7 @@ export const routes = [
     path: '/table-list',
     name: 'table-list',
     component: TableList,
-    meta: { keepAlive: true },
+    meta: {keepAlive: true},
     props: () => ({
       id: 1008611,
     }),
@@ -68,6 +68,13 @@ export const routes = [
     path: '/temp',
     name: 'temp',
     component: Temp,
+  },
+  {
+    path: '/mic/*',
+    name: 'mic',
+    component: {
+      render: (c) => c('router-view'),
+    },
   },
 ];
 

@@ -89,7 +89,7 @@ export default {
       //   }
       // })
       // window.open(newpage.href, '_blank');
-      this.jumpUrl(`/menu/react/detail/${options.id}`);
+      this.jumpUrl(`/mic/react/detail/${options.id}`);
     },
     seeHandle(options) {
       // 改变值
